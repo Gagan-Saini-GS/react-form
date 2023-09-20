@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TextareaInputInterface } from "../../types/types";
 import convertString from "../../Utils/convertStringToCapital";
 import Error from "./Error";
@@ -9,9 +10,17 @@ const TextareaInput: React.FC<TextareaInputInterface> = ({
   changeUserData,
   errorMessage,
 }) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   return (
     <>
-      <fieldset className="w-full border border-[#4b4b4b] px-2 rounded my-2">
+      <fieldset
+        className={`w-full border px-2 rounded my-2  ${
+          isActive
+            ? "border-[#9ecaed] shadow shadow-[#9ecaed]"
+            : "border-[#4b4b4b]"
+        }`}
+      >
         <legend className="px-1">{label}</legend>
         <div className="mb-1 w-full flex items-start">
           <div className="w-full">
@@ -22,6 +31,8 @@ const TextareaInput: React.FC<TextareaInputInterface> = ({
               onChange={(e) =>
                 changeUserData(convertString(label), e.target.value)
               }
+              onFocus={() => setIsActive(true)}
+              onBlur={() => setIsActive(false)}
             ></textarea>
           </div>
         </div>

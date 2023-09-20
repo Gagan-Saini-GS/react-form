@@ -23,16 +23,20 @@ const TextInput: React.FC<TextInputInterface> = ({
         }`}
       >
         <legend className="px-1">{label}</legend>
-        <div className=" mb-1 w-full flex ">
+        <div className="mb-1 w-full flex">
           <div className="w-full">
             <input
               type={inputType}
-              id={label}
               value={value}
               placeholder={placeholder}
               className="w-full rounded inline-block outline-none bg-transparent pl-1"
               onChange={(e) => {
-                changeUserData(convertString(label), e.target.value);
+                if (inputType === "email")
+                  changeUserData(
+                    convertString(label),
+                    e.target.value.toLowerCase()
+                  );
+                else changeUserData(convertString(label), e.target.value);
               }}
               onFocus={() => setIsActive(true)}
               onBlur={() => setIsActive(false)}

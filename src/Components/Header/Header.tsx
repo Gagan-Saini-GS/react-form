@@ -3,7 +3,7 @@ import HamburgerIcon from "../Icons/HamburgerIcon";
 
 const Header = () => {
   return (
-    <div className="bg-slate-600 flex justify-between items-center p-4">
+    <div className=" bg-blue-200 flex justify-between items-center p-4 shadow-lg">
       <div className="flex items-center">
         <HamburgerIcon />
         <div className="font-semibold text-2xl ml-3">User Form</div>

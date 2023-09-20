@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Companies,
-  Genders,
-  IdTypes,
-  SERVER_URL,
-  States,
-  cities,
-} from "../../config";
+import { SERVER_URL } from "../../config";
 import validateUserForm from "../../Utils/validateUserForm";
 import TextInput from "../Shared/TextInput";
 import { UserInterface } from "../../types/types";
@@ -17,6 +10,12 @@ import SearchBar from "../Search/SearchBar";
 import SearchResultList from "../Search/SearchResultList";
 
 const UserForm = () => {
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [idTypes, setIdTypes] = useState([]);
+  const [companies, setCompanies] = useState([]);
+  const [allGender, setAllGender] = useState([]);
+
   const [searchResults, setSearchResults] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState<number>(0);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
@@ -67,27 +66,25 @@ const UserForm = () => {
     }, 3000);
   };
 
-  const submitUserForm = async (e: React.FormEvent) => {
-    // On Submit
-    e.preventDefault();
-    setSubmitFlag(true);
+  const submitUserForm = async () => {
+    // setSubmitFlag(true);
 
-    // Disabled is true that means some feild is still empty
-    // So don't submit form.
-    if (isDisabled) return;
+    // // Disabled is true that means some feild is still empty
+    // // So don't submit form.
+    // if (isDisabled) return;
 
-    const err = validateUserForm(user);
-    const errArr = Object.values(err);
-    let errFlag: boolean = false;
+    // const err = validateUserForm(user);
+    // const errArr = Object.values(err);
+    // let errFlag: boolean = false;
 
-    for (let i = 0; i < errArr.length; i++) {
-      if (errArr[i] !== "") errFlag = true;
-    }
+    // for (let i = 0; i < errArr.length; i++) {
+    //   if (errArr[i] !== "") errFlag = true;
+    // }
 
-    if (errFlag) {
-      setIsDisabled(true);
-      return;
-    }
+    // if (errFlag) {
+    //   setIsDisabled(true);
+    //   return;
+    // }
 
     try {
       const response = await axios.post(SERVER_URL + "/users", {
@@ -95,7 +92,7 @@ const UserForm = () => {
         body: user,
       });
 
-      console.log(response.data);
+      // console.log(response.data);
       showAlert();
       setUser({
         firstName: "",
@@ -125,16 +122,79 @@ const UserForm = () => {
         body: { ...user },
       });
 
+      // console.log(res.data);
       showAlert();
-      console.log(res.data);
+      setUser({
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        gender: "",
+        address: "",
+        city: "",
+        state: "",
+        idType: "",
+        idValue: "",
+        nationality: "",
+        email: "",
+        phoneNumber: "",
+        company: "",
+      });
+      setSubmitFlag(false);
+      setIsDisabled(true);
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleSubmission = (e: React.FormEvent) => {
-    selectedUserId === 0 ? submitUserForm(e) : updateUserForm();
+    // On Submit or Update
+    e.preventDefault();
+
+    setSubmitFlag(true);
+    if (isDisabled) return;
+
+    const err = validateUserForm(user);
+    const errArr = Object.values(err);
+    let errFlag: boolean = false;
+
+    for (let i = 0; i < errArr.length; i++) {
+      if (errArr[i] !== "") errFlag = true;
+    }
+
+    if (errFlag) {
+      setIsDisabled(true);
+      return;
+    }
+
+    selectedUserId === 0 ? submitUserForm() : updateUserForm();
   };
+
+  useEffect(() => {
+    axios
+      .get(SERVER_URL + "/states")
+      .then((res) => setStates(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get(SERVER_URL + "/cities")
+      .then((res) => setCities(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get(SERVER_URL + "/idTypes")
+      .then((res) => setIdTypes(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get(SERVER_URL + "/companies")
+      .then((res) => setCompanies(res.data))
+      .catch((err) => console.log(err));
+
+    axios
+      .get(SERVER_URL + "/gender")
+      .then((res) => setAllGender(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     if (submitFlag) setErrors(validateUserForm(user));
@@ -221,7 +281,7 @@ const UserForm = () => {
             />
             <SelectInput
               label="Gender"
-              options={Genders}
+              options={allGender}
               value={user.gender}
               changeUserData={changeUserData}
               errorMessage={errors?.gender}
@@ -244,14 +304,14 @@ const UserForm = () => {
           <div className="w-2/6">
             <SelectInput
               label="State"
-              options={States}
+              options={states}
               value={user.state}
               changeUserData={changeUserData}
               errorMessage={errors?.state}
             />
             <SelectInput
               label="Id Type"
-              options={IdTypes}
+              options={idTypes}
               value={user.idType}
               changeUserData={changeUserData}
               errorMessage={errors?.idType}
@@ -290,7 +350,7 @@ const UserForm = () => {
             />
             <SelectInput
               label="Company"
-              options={Companies}
+              options={companies}
               value={user.company}
               changeUserData={changeUserData}
               errorMessage={errors?.company}
@@ -299,8 +359,10 @@ const UserForm = () => {
         </div>
         <div className="w-full">
           <button
-            className={`px-8 py-2 mx-auto my-2 cursor-pointer block text-white text-2xl rounded-lg uppercase ${
-              isDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-slate-900"
+            className={`px-8 py-2 mx-auto my-2 block text-white text-2xl rounded-lg uppercase ${
+              isDisabled
+                ? "bg-gray-200 cursor-not-allowed text-gray-500"
+                : "bg-blue-700 cursor-pointer"
             }`}
             onClick={handleSubmission}
             type="submit"

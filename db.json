@@ -15,9 +15,9 @@
         "idType": "Admin",
         "idValue": "powerfulladmingagan",
         "nationality": "India",
-        "email": "gagan@gmail.com",
+        "email": "gagansaini@gmail.com",
         "phoneNumber": "8302712819",
-        "company": "Google"
+        "company": "Amazon"
       },
       "id": 1
     },
@@ -47,8 +47,8 @@
         "Content-Type": "application/json"
       },
       "body": {
-        "firstName": "Anivesh",
-        "lastName": "Mathur",
+        "firstName": "Animesh",
+        "lastName": "Agarwal",
         "dateOfBirth": "1998-12-15",
         "gender": "Male",
         "address": "s8ul gaming house",
@@ -62,6 +62,390 @@
         "company": "S8UL"
       },
       "id": 3
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "firstName": "Payal",
+        "lastName": "Roy",
+        "dateOfBirth": "2000-06-08",
+        "gender": "Female",
+        "address": "Random area in the new world",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "idType": "Employee",
+        "idValue": "payalgaming",
+        "nationality": "India",
+        "email": "payal@gmail.com",
+        "phoneNumber": "9922118877",
+        "company": "Amazon"
+      },
+      "id": 4
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "firstName": "Gagan",
+        "lastName": "Roy",
+        "dateOfBirth": "2002-12-09",
+        "gender": "Male",
+        "address": "Random area in the lost world",
+        "city": "Bikaner",
+        "state": "Rajasthan",
+        "idType": "Admin",
+        "idValue": "adminpower",
+        "nationality": "India",
+        "email": "gagansaini@gmail.com",
+        "phoneNumber": "8302712121",
+        "company": "Google"
+      },
+      "id": 5
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "firstName": "Rohan",
+        "lastName": "Roy",
+        "dateOfBirth": "2003-12-12",
+        "gender": "Male",
+        "address": "Random area in the lost world",
+        "city": "Bikaner",
+        "state": "Rajasthan",
+        "idType": "Employee",
+        "idValue": "managerRohan",
+        "nationality": "India",
+        "email": "rohan@gmail.com",
+        "phoneNumber": "8429841212",
+        "company": "Amazon"
+      },
+      "id": 6
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "firstName": "Rahul",
+        "lastName": "Mathur",
+        "dateOfBirth": "2004-05-15",
+        "gender": "Male",
+        "address": "Random area in the lost world",
+        "city": "Jaipur",
+        "state": "Rajasthan",
+        "idType": "Employee",
+        "idValue": "managerRahul",
+        "nationality": "India",
+        "email": "rahul@gmail.com",
+        "phoneNumber": "8203249413",
+        "company": "Google"
+      },
+      "id": 7
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "firstName": "Kritika",
+        "lastName": "Agarwal",
+        "dateOfBirth": "2003-11-14",
+        "gender": "Female",
+        "address": "Random area somewhere around the lost world.",
+        "city": "Bikaner",
+        "state": "Rajasthan",
+        "idType": "Employee",
+        "idValue": "importantempkritika",
+        "nationality": "India",
+        "email": "kritika@gmail.com",
+        "phoneNumber": "9090898979",
+        "company": "Google"
+      },
+      "id": 8
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "firstName": "Ankita",
+        "lastName": "Chouhan",
+        "dateOfBirth": "2001-12-19",
+        "gender": "Female",
+        "address": "Random area somewhere around the new world.",
+        "city": "Bikaner",
+        "state": "Rajasthan",
+        "idType": "Employee",
+        "idValue": "empAnkita",
+        "nationality": "India",
+        "email": "ankitachouhan@gmail.com",
+        "phoneNumber": "9090909061",
+        "company": "Microsoft"
+      },
+      "id": 9
+    }
+  ],
+  "states": [
+    {
+      "id": "",
+      "name": "Select"
+    },
+    {
+      "id": "AN",
+      "name": "Andaman and Nicobar Islands"
+    },
+    {
+      "id": "AP",
+      "name": "Andhra Pradesh"
+    },
+    {
+      "id": "AR",
+      "name": "Arunachal Pradesh"
+    },
+    {
+      "id": "AS",
+      "name": "Assam"
+    },
+    {
+      "id": "BR",
+      "name": "Bihar"
+    },
+    {
+      "id": "CH",
+      "name": "Chandigarh"
+    },
+    {
+      "id": "CT",
+      "name": "Chhattisgarh"
+    },
+    {
+      "id": "DN",
+      "name": "Dadra and Nagar Haveli and Daman and Diu"
+    },
+    {
+      "id": "DL",
+      "name": "Delhi"
+    },
+    {
+      "id": "GA",
+      "name": "Goa"
+    },
+    {
+      "id": "GJ",
+      "name": "Gujarat"
+    },
+    {
+      "id": "HR",
+      "name": "Haryana"
+    },
+    {
+      "id": "HP",
+      "name": "Himachal Pradesh"
+    },
+    {
+      "id": "JK",
+      "name": "Jammu and Kashmir"
+    },
+    {
+      "id": "JH",
+      "name": "Jharkhand"
+    },
+    {
+      "id": "KA",
+      "name": "Karnataka"
+    },
+    {
+      "id": "KL",
+      "name": "Kerala"
+    },
+    {
+      "id": "LD",
+      "name": "Lakshadweep"
+    },
+    {
+      "id": "MP",
+      "name": "Madhya Pradesh"
+    },
+    {
+      "id": "MH",
+      "name": "Maharashtra"
+    },
+    {
+      "id": "MN",
+      "name": "Manipur"
+    },
+    {
+      "id": "ML",
+      "name": "Meghalaya"
+    },
+    {
+      "id": "MZ",
+      "name": "Mizoram"
+    },
+    {
+      "id": "NL",
+      "name": "Nagaland"
+    },
+    {
+      "id": "OR",
+      "name": "Odisha"
+    },
+    {
+      "id": "PY",
+      "name": "Puducherry"
+    },
+    {
+      "id": "PB",
+      "name": "Punjab"
+    },
+    {
+      "id": "RJ",
+      "name": "Rajasthan"
+    },
+    {
+      "id": "SK",
+      "name": "Sikkim"
+    },
+    {
+      "id": "TN",
+      "name": "Tamil Nadu"
+    },
+    {
+      "id": "TS",
+      "name": "Telangana"
+    },
+    {
+      "id": "TR",
+      "name": "Tripura"
+    },
+    {
+      "id": "UP",
+      "name": "Uttar Pradesh"
+    },
+    {
+      "id": "UK",
+      "name": "Uttarakhand"
+    },
+    {
+      "id": "WB",
+      "name": "West Bengal"
+    }
+  ],
+  "cities": [
+    {
+      "id": "",
+      "name": "Select"
+    },
+    {
+      "id": "1",
+      "name": "Bikaner"
+    },
+    {
+      "id": "2",
+      "name": "Jaipur"
+    },
+    {
+      "id": "3",
+      "name": "Surat"
+    },
+    {
+      "id": "4",
+      "name": "Bengaluru"
+    },
+    {
+      "id": "5",
+      "name": "Pune"
+    },
+    {
+      "id": "6",
+      "name": "Mumbai"
+    },
+    {
+      "id": "7",
+      "name": "Kolkata"
+    },
+    {
+      "id": "8",
+      "name": "Bhopal"
+    },
+    {
+      "id": "9",
+      "name": "Chennai"
+    },
+    {
+      "id": "10",
+      "name": "Hyderabad"
+    }
+  ],
+  "idTypes": [
+    {
+      "id": "",
+      "name": "Select"
+    },
+    {
+      "id": "User",
+      "name": "User"
+    },
+    {
+      "id": "Admin",
+      "name": "Admin"
+    },
+    {
+      "id": "Employee",
+      "name": "Employee"
+    }
+  ],
+  "companies": [
+    {
+      "id": "",
+      "name": "Select"
+    },
+    {
+      "id": "google",
+      "name": "Google"
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft"
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon"
+    },
+    {
+      "id": "meta",
+      "name": "Meta"
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix"
+    },
+    {
+      "id": "s8ul",
+      "name": "S8UL"
+    }
+  ],
+  "gender": [
+    {
+      "id": "",
+      "name": "Select"
+    },
+    {
+      "id": "male",
+      "name": "Male"
+    },
+    {
+      "id": "female",
+      "name": "Female"
+    },
+    {
+      "id": "other",
+      "name": "Other"
     }
   ]
 }
