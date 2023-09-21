@@ -67,32 +67,12 @@ const UserForm = () => {
   };
 
   const submitUserForm = async () => {
-    // setSubmitFlag(true);
-
-    // // Disabled is true that means some feild is still empty
-    // // So don't submit form.
-    // if (isDisabled) return;
-
-    // const err = validateUserForm(user);
-    // const errArr = Object.values(err);
-    // let errFlag: boolean = false;
-
-    // for (let i = 0; i < errArr.length; i++) {
-    //   if (errArr[i] !== "") errFlag = true;
-    // }
-
-    // if (errFlag) {
-    //   setIsDisabled(true);
-    //   return;
-    // }
-
     try {
       const response = await axios.post(SERVER_URL + "/users", {
         headers: { "Content-Type": "application/json" },
         body: user,
       });
 
-      // console.log(response.data);
       showAlert();
       setUser({
         firstName: "",
@@ -122,7 +102,6 @@ const UserForm = () => {
         body: { ...user },
       });
 
-      // console.log(res.data);
       showAlert();
       setUser({
         firstName: "",
@@ -141,6 +120,7 @@ const UserForm = () => {
       });
       setSubmitFlag(false);
       setIsDisabled(true);
+      setSelectedUserId(0);
     } catch (error) {
       console.log(error);
     }
