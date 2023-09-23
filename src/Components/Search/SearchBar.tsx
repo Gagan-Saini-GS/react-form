@@ -10,7 +10,7 @@ const SearchBar: React.FC<SearchInputInterface> = ({ setSearchResults }) => {
 
   const getAllUser = async () => {
     try {
-      const response = await axios.get(SERVER_URL + "/users");
+      const response = await axios.get(`${SERVER_URL}/users`);
       setAllUsers(response.data);
       setSearchResults(response.data);
     } catch (error) {
@@ -22,11 +22,8 @@ const SearchBar: React.FC<SearchInputInterface> = ({ setSearchResults }) => {
     const value = e.target.value;
     setSearchUser(value);
 
-    // The only remaining feature
-    // Filter data on basis of searchUser input text
-
     const filteredUsers = allUsers.filter((user: any) => {
-      const fullName = user.body.firstName + " " + user.body.lastName;
+      const fullName = `${user.body.firstName} ${user.body.lastName}`;
       return fullName.toLowerCase().includes(value.toLowerCase());
     });
 

@@ -1,18 +1,18 @@
-export interface TextInputInterface {
+export interface InputInterface {
   label: string;
-  inputType: string;
-  placeholder: string;
-  value: string | number;
+  userLabel: string;
+  value: string;
   changeUserData: (label: string, value: string) => void;
   errorMessage: string;
 }
 
-export interface TextareaInputInterface {
-  label: string;
+export interface TextInputInterface extends InputInterface {
+  inputType: string;
   placeholder: string;
-  value: string;
-  changeUserData: (label: string, value: string) => void;
-  errorMessage: string;
+}
+
+export interface TextareaInputInterface extends InputInterface {
+  placeholder: string;
 }
 
 export interface OptionInterface {
@@ -20,12 +20,8 @@ export interface OptionInterface {
   name: string;
 }
 
-export interface SelectInputInterface {
-  label: string;
+export interface SelectInputInterface extends InputInterface {
   options: OptionInterface[];
-  value: string;
-  changeUserData: (label: string, value: string) => void;
-  errorMessage: string;
 }
 
 export interface UserInterface {

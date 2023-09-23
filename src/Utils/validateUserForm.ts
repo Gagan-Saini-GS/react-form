@@ -40,7 +40,15 @@ const validateUserForm = (user: UserInterface) => {
 
   if (!user.company) errors.company = "Company is required!";
 
-  return errors;
+  let isError = false;
+
+  const errArr = Object.values(errors);
+
+  for (let i = 0; i < errArr.length; i++) {
+    if (errArr[i] !== "") isError = true;
+  }
+
+  return { errors: errors, isError: isError };
 };
 
 export default validateUserForm;

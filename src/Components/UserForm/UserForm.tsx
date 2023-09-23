@@ -68,7 +68,7 @@ const UserForm = () => {
 
   const submitUserForm = async () => {
     try {
-      const response = await axios.post(SERVER_URL + "/users", {
+      await axios.post(`${SERVER_URL}/users`, {
         headers: { "Content-Type": "application/json" },
         body: user,
       });
@@ -98,7 +98,7 @@ const UserForm = () => {
 
   const updateUserForm = async () => {
     try {
-      const res = await axios.patch(SERVER_URL + "/users/" + selectedUserId, {
+      await axios.patch(`${SERVER_URL}/users/${selectedUserId}`, {
         body: { ...user },
       });
 
@@ -134,14 +134,8 @@ const UserForm = () => {
     if (isDisabled) return;
 
     const err = validateUserForm(user);
-    const errArr = Object.values(err);
-    let errFlag: boolean = false;
 
-    for (let i = 0; i < errArr.length; i++) {
-      if (errArr[i] !== "") errFlag = true;
-    }
-
-    if (errFlag) {
+    if (err?.isError) {
       setIsDisabled(true);
       return;
     }
@@ -151,34 +145,34 @@ const UserForm = () => {
 
   useEffect(() => {
     axios
-      .get(SERVER_URL + "/states")
+      .get(`${SERVER_URL}/states`)
       .then((res) => setStates(res.data))
       .catch((err) => console.log(err));
 
     axios
-      .get(SERVER_URL + "/cities")
+      .get(`${SERVER_URL}/cities`)
       .then((res) => setCities(res.data))
       .catch((err) => console.log(err));
 
     axios
-      .get(SERVER_URL + "/idTypes")
+      .get(`${SERVER_URL}/idTypes`)
       .then((res) => setIdTypes(res.data))
       .catch((err) => console.log(err));
 
     axios
-      .get(SERVER_URL + "/companies")
+      .get(`${SERVER_URL}/companies`)
       .then((res) => setCompanies(res.data))
       .catch((err) => console.log(err));
 
     axios
-      .get(SERVER_URL + "/gender")
+      .get(`${SERVER_URL}/gender`)
       .then((res) => setAllGender(res.data))
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
-    if (submitFlag) setErrors(validateUserForm(user));
-  }, [user, submitFlag]);
+    if (submitFlag) setErrors(validateUserForm(user).errors);
+  }, [submitFlag, user]);
 
   useEffect(() => {
     const err = Object.values(errors);
@@ -237,6 +231,7 @@ const UserForm = () => {
           <div className="w-2/6">
             <TextInput
               label="First Name"
+              userLabel="firstName"
               inputType="text"
               placeholder="First Name"
               value={user.firstName}
@@ -245,6 +240,7 @@ const UserForm = () => {
             />
             <TextInput
               label="Last Name"
+              userLabel="lastName"
               inputType="text"
               placeholder="Last Name"
               value={user.lastName}
@@ -253,6 +249,7 @@ const UserForm = () => {
             />
             <TextInput
               label="Date Of Birth"
+              userLabel="dateOfBirth"
               inputType="date"
               placeholder="dd-mm-yyyy"
               value={user.dateOfBirth}
@@ -261,6 +258,7 @@ const UserForm = () => {
             />
             <SelectInput
               label="Gender"
+              userLabel="gender"
               options={allGender}
               value={user.gender}
               changeUserData={changeUserData}
@@ -268,6 +266,7 @@ const UserForm = () => {
             />
             <TextareaInput
               label="Address"
+              userLabel="address"
               placeholder="Write your address"
               value={user.address}
               changeUserData={changeUserData}
@@ -275,6 +274,7 @@ const UserForm = () => {
             />
             <SelectInput
               label="City"
+              userLabel="city"
               options={cities}
               value={user.city}
               changeUserData={changeUserData}
@@ -284,6 +284,7 @@ const UserForm = () => {
           <div className="w-2/6">
             <SelectInput
               label="State"
+              userLabel="state"
               options={states}
               value={user.state}
               changeUserData={changeUserData}
@@ -291,6 +292,7 @@ const UserForm = () => {
             />
             <SelectInput
               label="Id Type"
+              userLabel="idType"
               options={idTypes}
               value={user.idType}
               changeUserData={changeUserData}
@@ -298,6 +300,7 @@ const UserForm = () => {
             />
             <TextInput
               label="Id Value"
+              userLabel="idValue"
               inputType="text"
               placeholder="Enter Id Value"
               value={user.idValue}
@@ -306,6 +309,7 @@ const UserForm = () => {
             />
             <TextInput
               label="Nationality"
+              userLabel="nationality"
               inputType="text"
               placeholder="Nationality"
               value={user.nationality}
@@ -314,6 +318,7 @@ const UserForm = () => {
             />
             <TextInput
               label="Email"
+              userLabel="email"
               inputType="email"
               placeholder="xyz@gmail.com"
               value={user.email}
@@ -322,6 +327,7 @@ const UserForm = () => {
             />
             <TextInput
               label="Phone Number"
+              userLabel="phoneNumber"
               inputType="number"
               placeholder="1234567890"
               value={user.phoneNumber}
@@ -330,6 +336,7 @@ const UserForm = () => {
             />
             <SelectInput
               label="Company"
+              userLabel="company"
               options={companies}
               value={user.company}
               changeUserData={changeUserData}

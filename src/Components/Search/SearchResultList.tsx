@@ -7,7 +7,7 @@ const SearchResultList: React.FC<SearchResultsListInterface> = ({
   setSelectedUserId,
 }) => {
   return (
-    <div className="w-1/3 m-auto bg-slate-200 rounded max-h-64 overflow-y-scroll">
+    <div className="w-1/3 m-auto bg-slate-200 rounded max-h-64 overflow-y-scroll absolute left-1/3">
       {searchResults?.map((result) => {
         return (
           <div

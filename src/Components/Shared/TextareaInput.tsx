@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { TextareaInputInterface } from "../../types/types";
-import convertString from "../../Utils/convertStringToCapital";
 import Error from "./Error";
 
 const TextareaInput: React.FC<TextareaInputInterface> = ({
   label,
+  userLabel,
   placeholder,
   value,
   changeUserData,
@@ -28,9 +28,7 @@ const TextareaInput: React.FC<TextareaInputInterface> = ({
               value={value}
               placeholder={placeholder}
               className="w-full h-20 rounded inline-block resize-none outline-none bg-transparent pl-1"
-              onChange={(e) =>
-                changeUserData(convertString(label), e.target.value)
-              }
+              onChange={(e) => changeUserData(userLabel, e.target.value)}
               onFocus={() => setIsActive(true)}
               onBlur={() => setIsActive(false)}
             ></textarea>

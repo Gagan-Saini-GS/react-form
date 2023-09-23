@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SelectInputInterface } from "../../types/types";
-import convertString from "../../Utils/convertStringToCapital";
 import Error from "./Error";
 
 const SelectInput: React.FC<SelectInputInterface> = ({
   label,
+  userLabel,
   options,
   value,
   changeUserData,
@@ -25,9 +25,7 @@ const SelectInput: React.FC<SelectInputInterface> = ({
           <div className="w-full">
             <select
               className="w-full rounded inline-block outline-none bg-transparent"
-              onChange={(e) =>
-                changeUserData(convertString(label), e.target.value)
-              }
+              onChange={(e) => changeUserData(userLabel, e.target.value)}
               onFocus={() => setIsActive(true)}
               onBlur={() => setIsActive(false)}
               value={value}

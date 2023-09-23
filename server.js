@@ -4,6 +4,14 @@ const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults({ noCors: true });
 const cors = require("cors");
 
+// Custom middleware to normalize email addresses to lowercase
+server.use((req, res, next) => {
+  if (req.body && req.body.email) {
+    req.body.email = req.body.email.toLowerCase(); // Normalize email to lowercase
+  }
+  next();
+});
+
 // Set up CORS headers before using json-server middleware
 server.use(cors());
 server.use((req, res, next) => {
@@ -18,3 +26,6 @@ server.use((req, res, next) => {
   );
   next();
 });
+
+server.use(middlewares);
+server.use(router);

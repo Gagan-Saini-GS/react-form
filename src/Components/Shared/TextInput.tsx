@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { TextInputInterface } from "../../types/types";
-import convertString from "../../Utils/convertStringToCapital";
 import Error from "./Error";
 
 const TextInput: React.FC<TextInputInterface> = ({
   label,
+  userLabel,
   inputType,
   placeholder,
   value,
@@ -32,11 +32,8 @@ const TextInput: React.FC<TextInputInterface> = ({
               className="w-full rounded inline-block outline-none bg-transparent pl-1"
               onChange={(e) => {
                 if (inputType === "email")
-                  changeUserData(
-                    convertString(label),
-                    e.target.value.toLowerCase()
-                  );
-                else changeUserData(convertString(label), e.target.value);
+                  changeUserData(userLabel, e.target.value.toLowerCase());
+                else changeUserData(userLabel, e.target.value);
               }}
               onFocus={() => setIsActive(true)}
               onBlur={() => setIsActive(false)}
